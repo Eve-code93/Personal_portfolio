@@ -9,8 +9,14 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      // Highlight nav link based on scroll position
-      const sections = ['about', 'experience', 'projects', 'skills', 'certifications'];
+      const sections = [
+        'about',
+        'experience',
+        'projects',
+        'skills',
+        'certifications',
+        'contact',
+      ];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -19,7 +25,10 @@ const Navbar = () => {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -37,6 +46,7 @@ const Navbar = () => {
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (
@@ -44,12 +54,14 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className={`w-full ${
-        scrolled ? 'bg-[#e6e1d3]/90 backdrop-blur-sm' : 'bg-[#e6e1d3]'
-      } text-[#1C1C1C] fixed top-0 z-50 transition-all duration-300 border-b border-[#c4bcb3]/30 shadow-sm`}
+      className={`w-full fixed top-0 z-50 transition-all duration-300 border-b border-[#c4bcb3]/30 shadow-sm ${
+        scrolled
+          ? 'bg-[#e6e1d3]/90 backdrop-blur-sm'
+          : 'bg-[#e6e1d3]'
+      } text-[#1C1C1C]`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
-        {/* Logo/Name */}
+        {/* Logo / Name */}
         <motion.h1
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -58,7 +70,7 @@ const Navbar = () => {
           Evelyne Mbithe Joseph
         </motion.h1>
 
-        {/* Navigation */}
+        {/* Navigation Links */}
         <nav className="flex items-center justify-center flex-wrap gap-x-6 gap-y-2 text-base md:text-lg font-medium tracking-wide">
           {navItems.map((item) => (
             <motion.a
@@ -83,16 +95,16 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Resume Button */}
+        {/* Resume Download Button */}
         <motion.a
           href="/Evelyne_Joseph_Resume.pdf"
           download
-          className="hidden md:block relative px-4 py-2 rounded-md group"
+          className="relative hidden md:inline-flex items-center px-4 py-2 rounded-md group overflow-hidden"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="relative z-10 flex items-center gap-1 text-[#8A4F2C] group-hover:text-white transition-colors">
-            <span>Resume</span>
+          <span className="relative z-10 text-[#8A4F2C] group-hover:text-white transition-colors flex items-center gap-2">
+            Resume
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -109,8 +121,8 @@ const Navbar = () => {
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
           </span>
-          <span className="absolute inset-0 border border-[#8A4F2C] rounded-md group-hover:border-transparent transition-all duration-300"></span>
-          <span className="absolute inset-0 bg-[#8A4F2C] rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span className="absolute inset-0 bg-[#8A4F2C] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md" />
+          <span className="absolute inset-0 border border-[#8A4F2C] rounded-md group-hover:border-transparent transition-all duration-300" />
         </motion.a>
       </div>
     </motion.header>
@@ -118,3 +130,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

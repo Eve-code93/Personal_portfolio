@@ -7,6 +7,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
+import Contact from './components/Contact';
 const Section = ({ id, title, children }) => (
   <section id={id} className="py-20 px-4 border-t border-[#c4bcb3]/20">
     <div className="text-center mb-12">
@@ -38,14 +39,7 @@ function App() {
             <Projects />
             <Skills />
             <Certifications />
-            <Section id="contact" title="Get In Touch">
-              <div className="max-w-2xl mx-auto">
-                <p className="text-[#4a4745] mb-8">Coming soon...</p>
-                <div className="h-64 bg-white/30 rounded-lg flex items-center justify-center backdrop-blur-sm border border-[#c4bcb3]/30">
-                  <p className="text-[#8A4F2C]">Contact form will go here</p>
-                </div>
-              </div>
-            </Section>
+            <Contact />
           </main>
 
           <footer className="py-8 border-t border-[#c4bcb3]/20 text-center text-[#8A4F2C]/80">

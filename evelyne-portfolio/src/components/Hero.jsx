@@ -28,7 +28,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          Web Developer & Digital Craftsman
+          Full-Stack Developer | Open to New Opportunities
         </motion.h2>
 
         <motion.p
@@ -37,11 +37,11 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          I create elegant, functional digital experiences with meticulous attention to detail, 
-          blending clean code with thoughtful design for seamless user interactions.
+          I build performant, scalable web applications with a focus on clean code, elegant design, and seamless user experience.  
+          With a strong foundation in both frontend and backend development, I’m currently looking for full-time or freelance opportunities where I can grow, collaborate, and make a real impact.
         </motion.p>
 
-        {/* Main CTA buttons */}
+        {/* CTA Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row justify-center gap-4 mb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -62,11 +62,11 @@ const Hero = () => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
-            Let's Connect
+            Get In Touch
           </motion.a>
         </motion.div>
 
-        {/* Social links */}
+        {/* Social Links */}
         <motion.div
           className="flex justify-center gap-6 text-[#8A4F2C] text-2xl"
           initial={{ opacity: 0, y: 20 }}
@@ -79,6 +79,7 @@ const Hero = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
             className="hover:text-[#4a4745] transition"
+            title="GitHub"
           >
             <FaGithub />
           </motion.a>
@@ -88,6 +89,7 @@ const Hero = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
             className="hover:text-[#4a4745] transition"
+            title="LinkedIn"
           >
             <FaLinkedin />
           </motion.a>
