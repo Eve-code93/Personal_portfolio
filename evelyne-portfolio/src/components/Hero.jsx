@@ -40,7 +40,7 @@ const Hero = () => {
         <p className="mb-4">
           <span className="text-[#8A4F2C] font-bold">eve@portfolio</span>:~$&nbsp;
           <Typewriter
-            words={['welcome', 'hello', 'hey there', '👋']}
+            words={['Bonjour', 'hello', 'Karibu', '👋', 'Ciao', 'Hola']}
             loop={true}
             cursor
             cursorStyle="_"
@@ -58,6 +58,8 @@ const Hero = () => {
               'React + Django = 💻💥',
               'Clean code. Reliable systems.',
               'Frontend meets Backend.',
+              'Crafting digital experiences.',
+              'Your next project starts here.',
             ]}
             loop={true}
             cursor
@@ -75,6 +77,7 @@ const Hero = () => {
               'Open to remote opportunities.',
               'Available for freelance work.',
               'Let’s build something amazing.',
+              'Ready to collaborate on your next project.',
             ]}
             loop={true}
             cursor
