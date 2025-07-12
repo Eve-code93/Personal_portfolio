@@ -21,9 +21,8 @@ const About = () => {
           transition={{ delay: 0.1, duration: 0.6 }}
           viewport={{ once: true }}
         >
-         I'm Evelyne, a passionate full-stack developer dedicated to crafting elegant and intuitive web applications. 
-          With a background in both frontend and backend development, I enjoy transforming complex problems into beautiful, functional experiences. 
-          I'm constantly learning and thrive in collaborative, fast-paced environments that challenge me to push the boundaries of what's possible.
+          Hi, I'm <span className="font-semibold text-[#8A4F2C]">Evelyne</span>. I'm a Nairobi-based, globally available full-stack developer who transitioned from hospitality into tech. 
+          I’ve always thrived in fast-paced environments and love turning challenges into opportunities for growth.
         </motion.p>
 
         <motion.p
@@ -33,14 +32,27 @@ const About = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Outside of coding, I enjoy writing on <a 
-            href="https://medium.com/@evembijo" 
-            className="text-[#8A4F2C] underline hover:text-[#6D4C41] transition-colors" 
-            target="_blank" 
+          My work blends frontend and backend development with a strong interest in DevOps and system architecture. 
+          I'm currently advancing my skills in full-stack development with a keener interest in Backend Development and DevOps where I focus on everything from CI/CD to microservices.
+        </motion.p>
+
+        <motion.p
+          className="text-lg md:text-xl leading-relaxed text-[#4a4745] mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          Outside of code, I enjoy writing on{" "}
+          <a
+            href="https://medium.com/@evembijo"
+            className="text-[#8A4F2C] underline hover:text-[#6D4C41] transition-colors"
+            target="_blank"
             rel="noopener noreferrer"
           >
             Medium
-          </a>, exploring UI/UX trends, and contributing to open-source projects. My goal is to use technology to create meaningful digital products that leave a lasting impact to not only myself but to the people around me.
+          </a>, exploring design trends, and collaborating with teams that build meaningful things. Have a look and let me know what you think!. 
+          I'm curious, always learning, and passionate about tech that makes a difference.
         </motion.p>
       </div>
     </section>

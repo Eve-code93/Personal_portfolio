@@ -1,41 +1,77 @@
 import { motion } from 'framer-motion';
+import React from 'react';
+import { FaLinkedin } from 'react-icons/fa';
 
 const experiences = [
+ {
+  role: 'ALX ProDev Program (Backend Specialization)',
+  company: 'ALX Africa',
+  period: '2025 (Ongoing – Ends Dec)',
+  description:
+    'An advanced backend & DevOps specialization focusing on CI/CD, containerization, microservices, security, and performance optimization. ',
+  skills: [
+    'Advanced Python',
+    'SQL & DB Design',
+    'Docker',
+    'Microservices',
+    'CI/CD Pipelines',
+    'Security Best Practices',
+    'Testing with Pytest',
+    'Caching & Redis',
+  ],
+  certificateLink: '', // You'll upload later
+  learnMore: 'https://www.alxafrica.com/prodev/'
+  },
+
   {
-    role: 'Full-Stack Web Developer',
-    company: 'Freelance & Personal Projects',
+    role: 'Full-Stack Software Developer',
+    company: 'Moringa School',
+    period: '2024 (Ends July 2025)',
+    description:
+      'Comprehensive curriculum with hands-on training in frontend and backend technologies. Building full-stack web apps using React, Django, and PostgreSQL.',
+    skills: ['JavaScript', 'React', 'HTML/CSS', 'Flask', 'Agile'],
+    links: {
+      course: 'https://moringaschool.com/',
+    },
+    certificate: '', // Add later
+  },
+  {
+    role: 'ALX Backend Engineering Graduate',
+    company: 'ALX Africa',
+    period: '2024 – 2025',
+    description:
+      'Completed intensive backend training: Python, APIs, databases, Linux, Git, and advanced system design with peer learning.',
+    skills: ['Python', 'APIs', 'System Design', 'GitHub', 'Collaboration'],
+    links: {
+      course: 'https://www.alxafrica.com/software-engineering/',
+      linkedin: 'https://www.linkedin.com/in/evelynembithejoseph/',
+    },
+    certificate: '/certificates/alx-backend.pdf', // Replace with actual URL later
+  },
+  {
+    role: 'Full-Stack Developer (Freelance & Personal)',
+    company: 'Self-Taught & Projects',
     period: '2023 – Present',
     description:
-      'Designed and developed full-stack applications using React, Django, and PostgreSQL. Focused on building responsive UIs, secure backends, and RESTful APIs. Projects include an e-commerce platform, blogging system, and a ready-to-assemble furniture API.',
-    skills: ['React', 'Django', 'PostgreSQL', 'REST APIs', 'Tailwind CSS']
+      'Built and deployed web apps using Django, React, and PostgreSQL. Projects include an e-commerce site, blog engine, and furniture API.',
+    skills: ['React', 'Django', 'PostgreSQL', 'Tailwind CSS'],
+    links: {
+      github: 'https://github.com/Eve-code93',
+    },
   },
+ 
   {
-    role: 'ALX Software Engineering Program',
-    company: 'ALX Africa',
-    period: '2023 – 2024',
-    description:
-      'Completed a rigorous hands-on software engineering program focused on full-stack web development, databases, and system design. Worked in teams on real-world projects using Git, Agile practices, and clean code principles.',
-    skills: ['Git', 'Agile', 'System Design', 'Algorithms', 'Team Collaboration']
-  },
-  {
-    role: 'Hospitality Industry Background',
-    company: 'Various Brands',
+    role: 'Marketing & Sales (Real Estate)',
+    company: 'Various Real Estate Brands',
     period: '2015 – 2022',
     description:
-      'Led customer-facing teams, managed operations, and developed strong communication and organizational skills. This experience shaped my approach to user empathy and service-oriented design in tech.',
-    skills: ['Leadership', 'Communication', 'User Empathy', 'Problem Solving']
-  }
+      'Managed listings, optimized content with SEO, and closed property sales. This business background shaped my user-first approach in tech.',
+    skills: ['SEO', 'Sales', 'Customer Success', 'Content Strategy'],
+     links: {
+      linkedin: 'https://www.linkedin.com/in/evelynembithejoseph/',
+    },
+  },
 ];
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.25,
-      delayChildren: 0.3
-    }
-  }
-};
 
 const Experience = () => {
   return (
@@ -43,88 +79,96 @@ const Experience = () => {
       id="experience"
       className="py-20 px-4 border-t border-[#c4bcb3]/30 bg-gradient-to-b from-[#e6e1d3] to-[#dad4c2]"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-4xl font-serif font-bold text-[#8A4F2C] text-center mb-16"
+          className="text-3xl md:text-4xl font-serif font-bold text-[#8A4F2C] text-center mb-12"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, type: 'spring' }}
-          viewport={{ once: true }}
         >
-          Professional Journey
+          Experience & Education
         </motion.h2>
 
-        <motion.div
-          className="relative"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Timeline line */}
-          <div className="absolute left-6 md:left-1/2 h-full w-0.5 bg-[#8A4F2C]/20 -translate-x-1/2" />
+        <div className="space-y-10">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-[#c4bcb3]/30 shadow-sm hover:shadow-md transition-all"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="mb-2">
+                <h3 className="text-xl md:text-2xl font-bold text-[#8A4F2C]">{exp.role}</h3>
+                <p className="text-sm text-[#6b5f57] flex items-center gap-1">
+                  <span>{exp.company}</span>
+                  <span className="text-[#8A4F2C]">•</span>
+                  <span className="italic">{exp.period}</span>
+                </p>
+              </div>
 
-          <div className="space-y-20">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                className="relative"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 120,
-                  damping: 18,
-                  delay: index * 0.2
-                }}
-                viewport={{ once: true }}
-              >
-                {/* Timeline dot */}
-                <div
-                  className={`absolute top-6 ${
-                    index % 2 === 0
-                      ? 'left-6 md:left-1/2 -translate-x-1/2'
-                      : 'right-6 md:right-1/2 translate-x-1/2'
-                  } w-6 h-6 rounded-full bg-[#8A4F2C] border-4 border-[#e6e1d3] z-10`}
-                />
+              <p className="text-[#4a4745] mb-4">{exp.description}</p>
 
-                <motion.div
-                  className={`bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-lg border border-[#c4bcb3]/30 shadow-md hover:shadow-lg transition-transform ${
-                    index % 2 === 0
-                      ? 'md:mr-auto md:max-w-[48%]'
-                      : 'md:ml-auto md:max-w-[48%]'
-                  }`}
-                  whileHover={{ y: -6 }}
-                >
-                  <h3 className="text-xl md:text-2xl font-bold text-[#8A4F2C] mb-1">{exp.role}</h3>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[#4a4745] font-medium">{exp.company}</span>
-                    <span className="text-[#8A4F2C]">•</span>
-                    <span className="text-sm text-[#6b5f57] italic">{exp.period}</span>
-                  </div>
-                  <p className="text-[#4a4745] leading-relaxed mb-5">{exp.description}</p>
-
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
+              {/* Skills tags */}
+              <div className="flex flex-wrap gap-2 mb-3">
+                {exp.skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs rounded-full bg-[#8A4F2C]/10 text-[#8A4F2C] border border-[#8A4F2C]/20"
                   >
-                    {exp.skills.map((skill, i) => (
-                      <motion.span
-                        key={i}
-                        className="px-3 py-1 text-xs rounded-full bg-[#8A4F2C]/10 text-[#8A4F2C] border border-[#8A4F2C]/20 backdrop-blur-sm"
-                        whileHover={{ scale: 1.08 }}
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+
+              {/* Links */}
+              <div className="flex flex-wrap gap-3 text-sm text-[#4a4745]">
+                {exp.links?.course && (
+                  <a
+                    href={exp.links.course}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-[#8A4F2C] transition"
+                  >
+                    View Course
+                  </a>
+                )}
+                {exp.certificate && (
+                  <a
+                    href={exp.certificate}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-[#8A4F2C] transition"
+                  >
+                    View Certificate
+                  </a>
+                )}
+                {exp.links?.linkedin && (
+                  <a
+                    href={exp.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 underline hover:text-[#8A4F2C] transition"
+                  >
+                    <FaLinkedin className="text-base" />
+                    Learn More
+                  </a>
+                )}
+                {exp.links?.github && (
+                  <a
+                    href={exp.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-[#8A4F2C] transition"
+                  >
+                    Projects on GitHub
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

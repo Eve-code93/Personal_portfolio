@@ -35,7 +35,7 @@ function App() {
           <main className="pt-16 md:pt-20">
             <Hero />
             <About />
-            <Experience />
+            <Experience  />
             <Projects />
             <Skills />
             <Certifications />
