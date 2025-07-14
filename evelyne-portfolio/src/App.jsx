@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import WelcomeScreen from './components/WelcomeScreen';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+
 const Section = ({ id, title, children }) => (
   <section id={id} className="py-20 px-4 border-t border-[#c4bcb3]/20">
     <div className="text-center mb-12">
@@ -20,33 +20,23 @@ const Section = ({ id, title, children }) => (
 );
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-
   return (
     <div className="relative bg-gradient-to-b from-[#e6e1d3] to-[#c4bcb3] text-[#1C1C1C] min-h-screen font-sans antialiased">
-      
-      {/* Welcome Screen - Shows first, then fades out */}
-      {!showContent && <WelcomeScreen onComplete={() => setShowContent(true)} />}
+      <Navbar />
 
-      {/* Main Content */}
-      {showContent && (
-        <>
-          <Navbar />
-          <main className="pt-16 md:pt-20">
-            <Hero />
-            <About />
-            <Experience  />
-            <Projects />
-            <Skills />
-            <Certifications />
-            <Contact />
-          </main>
+      <main className="pt-16 md:pt-20">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <Contact />
+      </main>
 
-          <footer className="py-8 border-t border-[#c4bcb3]/20 text-center text-[#8A4F2C]/80">
-            <p>© {new Date().getFullYear()} Evelyne Mbithe Joseph. All rights reserved.</p>
-          </footer>
-        </>
-      )}
+      <footer className="py-8 border-t border-[#c4bcb3]/20 text-center text-[#8A4F2C]/80">
+        <p>© {new Date().getFullYear()} Evelyne Mbithe Joseph. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
