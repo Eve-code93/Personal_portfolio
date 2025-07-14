@@ -30,7 +30,11 @@ const certifications = [
 ];
 
 const Certifications = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
     <section id="certifications" className="py-20 px-4 border-t border-[#c4bcb3]/30 bg-gradient-to-b from-[#e6e1d3] to-[#dad4c2]">
@@ -55,62 +59,62 @@ const Certifications = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {certifications.map((cert, i) => (
-            <motion.div
-              key={i}
-              className="relative h-full"
-              onHoverStart={() => setHoveredIndex(i)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15 }}
-              viewport={{ once: true }}
-            >
-              <div className={`absolute inset-0 bg-[#8A4F2C] rounded-xl transition-all duration-300 ${hoveredIndex === i ? 'opacity-10' : 'opacity-0'}`} />
-              
-              <div className="h-full bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-[#c4bcb3]/30 shadow-sm flex flex-col">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="bg-[#8A4F2C]/10 p-3 rounded-lg text-[#8A4F2C]">
-                    <FaCertificate className="text-xl" />
+          {certifications.map((cert, i) => {
+            const isExpanded = expandedIndex === i;
+            return (
+              <motion.div
+                key={i}
+                className="relative h-full cursor-pointer"
+                onClick={() => handleToggle(i)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <div className={`absolute inset-0 bg-[#8A4F2C] rounded-xl transition-all duration-300 ${isExpanded ? 'opacity-10' : 'opacity-0'}`} />
+
+                <div className="h-full bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-[#c4bcb3]/30 shadow-sm flex flex-col">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-[#8A4F2C]/10 p-3 rounded-lg text-[#8A4F2C]">
+                      <FaCertificate className="text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-[#4a4745]">{cert.title}</h3>
+                      <p className="text-sm text-[#6b5f57]">{cert.issuer}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#4a4745]">{cert.title}</h3>
-                    <p className="text-sm text-[#6b5f57]">{cert.issuer}</p>
+
+                  <div className="mt-auto space-y-3">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-[#6b5f57]">{cert.year}</span>
+                      <span className={`font-medium ${
+                        cert.status === 'In Progress' ? 'text-yellow-700' : 'text-green-700'
+                      }`}>
+                        {cert.status}
+                      </span>
+                    </div>
+
+                    <motion.div
+                      className="overflow-hidden"
+                      initial={false}
+                      animate={{ height: isExpanded ? 'auto' : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-[#4a4745] text-sm pt-2">{cert.description}</p>
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-[#8A4F2C] text-sm font-medium mt-2"
+                      >
+                        View credential <FaExternalLinkAlt className="text-xs" />
+                      </a>
+                    </motion.div>
                   </div>
                 </div>
-
-                <div className="mt-auto space-y-3">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#6b5f57]">{cert.year}</span>
-                    <span className={`font-medium ${
-                      cert.status === 'In Progress' ? 'text-yellow-700' : 'text-green-700'
-                    }`}>
-                      {cert.status}
-                    </span>
-                  </div>
-
-                  <motion.div
-                    className="overflow-hidden"
-                    initial={{ height: 0 }}
-                    animate={{ height: hoveredIndex === i ? 'auto' : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="text-[#4a4745] text-sm pt-2">{cert.description}</p>
-                  </motion.div>
-
-                  <motion.a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-1 text-[#8A4F2C] text-sm font-medium mt-3 ${hoveredIndex === i ? 'opacity-100' : 'opacity-0'} transition-opacity`}
-                    whileHover={{ x: 2 }}
-                  >
-                    View credential <FaExternalLinkAlt className="text-xs" />
-                  </motion.a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
